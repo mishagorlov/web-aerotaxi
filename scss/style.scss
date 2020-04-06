@@ -1,0 +1,416 @@
+$fontFamily: 'Montserrat', sans-serif;
+$fontDefault: 16px;
+$colorWhite: #fff;
+$colorSecondary: #b4b4b4;
+$colorBlue: #10284B;
+$bgColor1: #1B4686;
+$bgColor2: #119BFF;
+$greenColor: #22AD6A;
+
+@mixin DefaultText {
+  font-size: $fontDefault;
+  line-height: 29px;
+  font-weight: 400;
+}
+
+@mixin MenuText {
+  font-size: $fontDefault;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+@mixin MenuTextRegular {
+  font-size: $fontDefault;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+@mixin BorderStyle {
+  background: $colorWhite;
+  border-radius: 2px;
+  opacity: 30%;
+}
+
+@mixin BorderField {
+  border: 1px solid $colorSecondary;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+@mixin BorderSmall {
+  background: $colorWhite;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+// Спецификация
+
+body {
+  font-family: $fontFamily;
+  margin: 0;
+  padding: 0;
+  font-size: $fontDefault;
+}
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+}
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 36px;
+}
+ul, li {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+hr {
+  margin: 0;
+}
+
+// Первый экран
+
+header {
+  background: $bgColor1;
+}
+.menu {
+  height: 100px;
+}
+.menu__item:not(.person) {
+  padding: 0 25px;
+}
+.person {
+  padding: 0;
+}
+.menu__item a {
+  @include MenuText;
+  color: $colorWhite
+}
+.vertical {
+  @include BorderStyle;
+  width: 2px;
+  height: 50px;
+}
+
+// Второй экран
+
+.mainsection {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 31.3%, $colorWhite 100%), linear-gradient(181.36deg, $bgColor1 9%, $bgColor2 76.5%, $colorWhite 97.77%);
+}
+.title__block {
+  padding-top: 240px;
+  color: $colorWhite;
+  font-size: 48px;
+}
+.text__block {
+  @include DefaultText;
+  padding-top: 30px;
+  color: $colorWhite;
+}
+.horizontal {
+  @include BorderStyle;
+  width: 96%;
+  height: 1px;
+}
+.plane {
+  margin-top: 100px;
+  width: 100%;
+}
+.choice__block {
+  padding: 0;
+  margin: 0;
+}
+.ticket__item {
+  padding-right: 35px;
+  a {
+    @include MenuTextRegular;
+    color: $colorWhite;
+  }
+}
+.active a {
+  @include MenuText;
+  color: $colorWhite;
+}
+.ticket-form {
+  padding-top: 100px;
+}
+.rectangle {
+  margin-top: 20px;
+  height: 93px;
+  background: $colorWhite;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding-left: 15px;
+}
+.greensearch {
+  width: 123px;
+  height: 53px;
+  background: $greenColor;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+.field:not(.greensearch) {
+  margin-right: 15px;
+  width: 222px;
+  height: 53px;
+  @include BorderField;
+}
+.field p {
+  @include MenuTextRegular;
+  color: $colorSecondary;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.greensearch p {
+  margin: 15px 0 auto auto;
+  text-align: center;
+  font-weight: 700;
+  color: $colorWhite;
+}
+.icon-down {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+// Третий экран
+
+.center_header {
+  text-align: center;
+}
+.center__title {
+  padding-top: 100px;
+  color: $colorBlue;
+}
+.center__text {
+  color: $colorSecondary;
+  margin-bottom: 50px;
+}
+.icon__image {
+  width: 54px;
+  height: 54px;
+}
+.feature__box {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.feature__text {
+  padding-left: 40px;
+}
+.text__offer {
+  @include DefaultText;
+  color: $colorBlue;
+  margin: 0;
+}
+.photo__features {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+// Четвертый экран
+
+.gallery__box {
+  margin: 0;
+  padding: 0;
+}
+
+$big_width: 100%; 			//Slider width - large display
+$big_height: 55%; 		//Slider height - large display
+$big_nav_width: 7%;	// Previous and Next width - large display
+
+$small_width: 100%; 	//Slider width - small display
+$small_height: 55%; 	//Slider height - small display
+$small_nav_width: 15%;// Previous and Next width - small display
+
+.content {
+	margin: 0 auto;
+	position: relative;
+	width: $big_width;
+	padding-bottom: $big_height;
+	user-select: none;
+  background: #333;
+
+	input {
+		display: none;
+	}
+
+	.slide_img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+
+		img {
+			width: inherit;
+			height: inherit;
+		}
+
+		.prev, .next {
+			width: $big_nav_width;
+			height: inherit;
+			position: absolute;
+			top: 0;
+			z-index: 99;
+			cursor: pointer;
+			text-align: center;
+		}
+		.next {
+			right: 0;
+		}
+		.prev {
+			left: 0;
+		}
+
+
+
+		.prev span, .next span {
+			position: absolute;
+			width: 0px;
+			height: 0px;
+			border: solid 20px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.prev span {
+			border-color: transparent #fff transparent transparent;
+			right: 35%;
+		}
+		.next span {
+			border-color: transparent transparent transparent #fff;
+			left: 35%;
+		}
+	}
+
+	#nav_slide {
+		width: 100%;
+		bottom: 12%;
+		height: 11px;
+		position: absolute;
+		text-align: center;
+		z-index: 99;
+		cursor: default;
+
+		.dots {
+			top: -5px;
+			width: 18px;
+			height: 18px;
+			margin: 0 3px;
+			position: relative;
+			border-radius: 100%;
+			display: inline-block;
+			background-color: rgba(0, 0, 0, 0.6);
+			transition: .4s;
+			cursor: pointer;
+		}
+
+		#dot1:hover {background: $colorBlue;}
+#dot2:hover {background: $colorBlue;}
+#dot3:hover {background: $colorBlue;}
+	}
+}
+
+#i1:checked ~ #one,
+#i2:checked ~ #two,
+#i3:checked ~ #three {
+	z-index: 9;
+	animation: scroll 1s ease-in-out;
+}
+
+#i1:checked ~ #nav_slide #dot1 {background: $colorBlue;}
+#i2:checked ~ #nav_slide #dot2 {background: $colorBlue;}
+#i3:checked ~ #nav_slide #dot3 {background: $colorBlue;}
+
+
+
+@keyframes scroll {
+	0% { opacity: .1;}
+	100% { opacity: 1;}
+}
+
+// Пятый экран
+
+.box__content {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+.rect {
+  display: block;
+  padding-top: 30px;
+  height: 313px;
+  width: auto;
+  @include BorderSmall;
+}
+.icon__text {
+  @include MenuText;
+  color: $colorBlue;
+  text-align: center;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 30px;
+}
+.big__icon {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  margin-top: 30px;
+}
+
+#map {
+  width: 100%;
+  position: relative;
+  padding-bottom: 44%;
+  filter: grayscale(100%) invert(90%);
+  display: block;
+}
+.down__form {
+  padding-top: 50px;
+  width: 100%;
+  z-index: 99999;
+  font-family: $fontFamily;
+}
+
+.footer {
+  height: 100px;
+}
+.footer__text {
+  @include MenuTextRegular;
+  margin-bottom: 20px;
+}
+.footer__head {
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.left {
+  padding-right: 30px;
+}
+.right {
+  text-align: right;
+  padding-left: 30px;
+}
+
+@media screen and (max-width: 1200px) {
+  .content__area {
+    flex-direction: column;
+    align-items: center;
+  }
+  .photo__features {
+    padding-top: 40px;
+  }
+}
+@media screen and (max-width: 992px) {
+  .logo {
+margin: 0 auto;
+margin-top: 40px;
+  }
+  .title__block {
+    padding-top: 100px;
+  }
+  .menu {
+    justify-content: space-around;
+  }
+  .box__content {
+    flex-direction: row;
+  }
+}
